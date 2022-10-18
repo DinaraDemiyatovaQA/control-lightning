@@ -1,0 +1,53 @@
+body {
+  overflow: hidden;
+  box-sizing: border-box;
+  margin: 0;
+  height: 100vh;
+  color: rgba(255, 255, 255, 0.934);
+  background-color: #34363b;
+}
+
+.container {
+  max-width: 940px;
+  margin: 100px auto;
+}
+
+.scenarios-title {
+  margin: 50px;
+  font-size: 40px;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.button {
+  width: 160px;
+  height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5%;
+}
+
+.button:hover {
+  background: #7b83eb;
+  cursor: pointer;
+}
+
+.button:active {
+  background: #464eb8;
+}
+
+.button-icon,
+.button-title {
+  padding: 10px;
+}
+
+.data {
+  margin: 50px;
+  font-size: 20px;
+}
