@@ -11,6 +11,10 @@ export const apiGetToken = async () => {
     console.log(`${url}${authPath}`);
     const response = await fetch(`${url}${authPath}`, {
         method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
             "token": "72178957-b2fe3212-d77b-4732-a043-374d2fb4c6ca"
         })
@@ -39,7 +43,7 @@ export const apiLightingControl = async () => {
         method: 'POST',
         credentials: 'include',
         headers: {
-            Accept: 'application/json',
+            'Content-Type': 'application/json',
             Authorization: `Bearer ${jwtToken}`,
         },
         body: JSON.stringify({
