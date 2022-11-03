@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "./Button";
 import { FaLightbulb } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import { apiGetActivity } from "../api";
+import { apiLightingControl } from "../api";
 
 const buttonsList = [
   { id: 1, title: "All on", color: "yellow" },
@@ -11,20 +11,17 @@ const buttonsList = [
 ];
 
 export const Buttons = () => {
-  const [data, setData] = useState("");
   const [activeButton, setActiveButton] = useState("");
 
   const onClickHandler = async (id) => {
     setActiveButton(id);
     try {
-      const response = await apiGetActivity();
-
+      // const response = await fetch("/test", {});
+      const response = await apiLightingControl();
+      console.log(response);
       if (!response.ok) {
         throw new Error(`Error! status: ${response.status}`);
       }
-
-      const result = await response.json();
-      setData(result.activity);
     } catch (err) {
       console.log(err);
     }
@@ -52,7 +49,6 @@ export const Buttons = () => {
           );
         })}
       </div>
-      {data && <div className="data">{data}</div>}
     </div>
   );
 };
