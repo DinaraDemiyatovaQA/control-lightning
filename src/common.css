@@ -17,6 +17,10 @@ body {
   font-size: 40px;
 }
 
+.status-container {
+  height: 40px;
+}
+
 .buttons-container {
   display: flex;
   justify-content: center;

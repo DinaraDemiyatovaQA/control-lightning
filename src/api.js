@@ -8,7 +8,6 @@ const sceneAllOn = 0;
 const sceneAllOff = 7;
 
 export const apiGetToken = async () => {
-    console.log(`${url}${authPath}`);
     const response = await fetch(`${url}${authPath}`, {
         method: 'POST',
         headers: {
@@ -19,7 +18,7 @@ export const apiGetToken = async () => {
             "token": "72178957-b2fe3212-d77b-4732-a043-374d2fb4c6ca"
         })
     });
-    console.log(response);
+    console.log("apiGetToken", response);
     if (response.ok) {
         const result = await response.json();
         console.log(result.token);
@@ -31,13 +30,7 @@ export const apiGetToken = async () => {
 };
 
 export const apiLightingControl = async () => {
-    //check dateExpiration
-    try {
-        await apiGetToken();
-    } catch (err) {
-        console.log(err);
-        return;
-    }
+    await apiGetToken();
 
     const response = await fetch(`${url}${lightingControlPath}`, {
         method: 'POST',
@@ -55,5 +48,12 @@ export const apiLightingControl = async () => {
             ]
         })
     });
-    return response;
+
+    if (response.ok) {
+        console.log("apiLightingControl", response);
+        return response;
+    }
+    else {
+        throw new Error(`Error! status: ${response.status}`);
+    }
 };

@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="scenarios-title">Scenarios</div>
+        <div className="scenarios-title">Light control</div>
         <Buttons />
       </div>
     </div>

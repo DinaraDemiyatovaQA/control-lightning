@@ -12,23 +12,32 @@ const buttonsList = [
 
 export const Buttons = () => {
   const [activeButton, setActiveButton] = useState("");
+  const [status, setStatus] = useState("");
 
   const onClickHandler = async (id) => {
     setActiveButton(id);
+
     try {
       // const response = await fetch("/test", {});
       const response = await apiLightingControl();
-      console.log(response);
+      console.log("onClickHandler", response);
       if (!response.ok) {
-        throw new Error(`Error! status: ${response.status}`);
+        setStatus(response.status);
+        console.log("onClickHandler", response.status);
+      } else {
+        setStatus("Success!");
+        console.log("onClickHandler: Success", response.status);
       }
     } catch (err) {
-      console.log(err);
+      setStatus(err.message);
+      console.log("onClickHandler", err);
     }
+    setTimeout(() => setStatus(""), 3000);
   };
 
   return (
     <div className="container">
+      <div className="status-container">{status && <h2>{status}</h2>}</div>
       <div className="buttons-container">
         {buttonsList.map((item) => {
           return (
