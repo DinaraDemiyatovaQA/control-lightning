@@ -16,6 +16,7 @@ export const Buttons = () => {
 
   const onClickHandler = async (id) => {
     setActiveButton(id);
+    setTimeout(() => setActiveButton(""), 500);
 
     try {
       // const response = await fetch("/test", {});
@@ -32,8 +33,6 @@ export const Buttons = () => {
       setStatus(err.message);
       console.log("onClickHandler", err);
     }
-
-    setTimeout(() => setActiveButton(""), 100);
 
     setTimeout(() => setStatus(""), 3000);
   };
