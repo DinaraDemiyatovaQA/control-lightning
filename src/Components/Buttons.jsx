@@ -33,13 +33,9 @@ export const Buttons = () => {
       console.log("onClickHandler", err);
     }
 
-    const timerActiveButton = setTimeout(() => setActiveButton(""), 200);
+    setTimeout(() => setActiveButton(""), 100);
 
-    const timerStatus = setTimeout(() => setStatus(""), 3000);
-    return () => {
-      clearTimeout(timerActiveButton);
-      clearTimeout(timerStatus);
-    };
+    setTimeout(() => setStatus(""), 3000);
   };
 
   return (
