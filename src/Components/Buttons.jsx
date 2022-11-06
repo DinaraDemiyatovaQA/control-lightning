@@ -16,11 +16,11 @@ export const Buttons = () => {
 
   const onClickHandler = async (id) => {
     setActiveButton(id);
-    setTimeout(() => setActiveButton(""), 500);
 
     try {
       // const response = await fetch("/test", {});
       const response = await apiLightingControl();
+      setTimeout(() => setActiveButton(""), 500);
       console.log("onClickHandler", response);
       if (!response.ok) {
         setStatus(response.status);
